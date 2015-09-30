@@ -1,0 +1,24 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: ncku_plus_dev
+  pool: 5
+  username: Yulin
+  password:
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: ncku_plus_production
+  pool: 5
+  username: Yulin
+  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: ncku_plus_test
+  pool: 5
+  username: Yulin
+  password:
+
