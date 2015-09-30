@@ -1,0 +1,29 @@
+.row
+  %nav.navbar.navbar-default
+    .container-fluid
+      .navbar-header
+        %a.navbar-brand{:href => "#"}
+          %img{:alt => "NCKU++", :src => ""}/
+      %ul.nav.navbar-nav.navbar-right
+        / Button trigger modal
+        %button.btn.btn-primary.btn-small{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"}
+          %i.fa.fa-user
+          登入
+        / Modal
+        #myModal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+          .modal-dialog{:role => "document"}
+            .modal-content
+              .modal-header
+                %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+                  %span{"aria-hidden" => "true"} ×
+                %h4#myModalLabel.modal-title 登入
+              .modal-body
+                %a#facebook-button.btn{:href => "#"}
+                  %i.fa.fa-facebook
+                  Sign in with Facebook
+                %a#google-button.btn{:href => "#"}
+                  %i.fa.fa-google
+                  Sign in with Google
+              .modal-footer
+                %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} 關閉
+                / <button type="button" class="btn btn-primary">Save changes</button>
