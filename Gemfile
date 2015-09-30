@@ -54,6 +54,9 @@ gem 'haml'
 gem 'haml-rails', '~> 0.9'
 gem 'font-awesome-rails'
 gem 'bootstrap-sass', '~> 3.3.5'
+gem 'mini_magick'
+gem 'paperclip'
+gem 'aws-sdk', '< 2.0'
 
 gem 'better_errors', group: 'development'
 

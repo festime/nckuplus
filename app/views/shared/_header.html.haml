@@ -18,7 +18,7 @@
                   %span{"aria-hidden" => "true"} ×
                 %h4#myModalLabel.modal-title 登入
               .modal-body
-                %a#facebook-button.btn{:href => "#"}
+                = link_to user_omniauth_authorize_path(:facebook), class: "btn", id: "facebook-button" do
                   %i.fa.fa-facebook
                   with Facebook
                 %a#google-button.btn{:href => "#"}
