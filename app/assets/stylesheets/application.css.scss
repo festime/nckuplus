@@ -1,0 +1,25 @@
+//= require_self
+//= require_tree
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+
+.navbar {
+  background-color: #ffffff;
+}
+
+.container {
+  width: 85%;
+}
+
+#facebook-button {
+  background: #3b5998;
+  color: white;
+}
+
+#google-button {
+  background: #da2d65;
+  color: white;
+}
+
