@@ -8,6 +8,7 @@
         / Button trigger modal
         - if user_signed_in?
           = image_tag current_user.avatar.url(:original), class: "img-circle img-responsive"
+          = link_to '登出', destroy_user_session_path, :method => :delete
         - else
           %button.btn.btn-primary.btn-small{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"}
             %i.fa.fa-user
