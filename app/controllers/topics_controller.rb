@@ -5,6 +5,10 @@ class TopicsController < ApplicationController
     @topics = Topic.all
   end
 
+  def show
+    @topic = Topic.find(params[:id])
+  end
+
   def new
     @topic = Topic.new
     @post  = Post.new
@@ -21,21 +25,19 @@ class TopicsController < ApplicationController
       @topic.update!(last_reply_at: @topic.created_at)
     end
 
-    binding.pry
     redirect_to root_path
 
   rescue ActiveRecord::RecordInvalid => exception
-    binding.pry
     render :new
   end
 
 private
 
   def topic_params
-    params.require(:topic).permit(:title)
+    params.require(:topic).permit(:title).merge({user_id: current_user.id})
   end
 
   def post_params
-    params.require(:post).permit(:content).merge({user: current_user})
+    params.require(:post).permit(:content).merge({user_id: current_user.id})
   end
 end

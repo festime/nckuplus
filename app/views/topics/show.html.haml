@@ -1,0 +1,15 @@
+.row
+  %h1= @topic.title
+.row
+  .col-xs-8.hr-wrapper
+    %hr
+- @topic.posts.each do |post|
+  .row
+    .col-xs-1.avatar-wrapper
+      = image_tag post.user.avatar.url(:original), class: "img-circle img-responsive avatar-image"
+    .col-xs-7
+      %div
+        %span= post.user.name
+        .post-date 2015/9/29
+      .post-content
+        = post.content

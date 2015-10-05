@@ -2,9 +2,44 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@mixin noPadding($top: initial, $bottom: initial, $left: initial, $right: initial) {
+  padding-top: $top;
+  padding-bottom: $bottom;
+  padding-left: $left;
+  padding-right: $right;
+}
+
 #new-topic {
   float: right;
 }
+
+.avatar-wrapper {
+  padding: 0px;
+  width: initial;
+}
+
+.avatar-image {
+  margin: 0 auto;
+  display: initial;
+  max-width: 25px;
+}
+
+.post-date {
+  float: right;
+}
+
+.post-content {
+  margin-top: 17px;
+}
+
+.hr-wrapper {
+  padding-left: 0px;
+}
+
+hr {
+  margin-left: 0px;
+}
+
 /*#dropdownMenu1 {*/
   /*display: inline;*/
   /*float: right;*/
