@@ -8,7 +8,7 @@
     = topic_form.label :title, "標題"
     = topic_form.text_field :title, class: "form-control", autofocus: true
   .form-group
-    = topic_form.fields_for @post do |post_form|
+    = fields_for @post do |post_form|
       = post_form.label :content, "內文"
       = post_form.cktext_area :content, rows: 10
   .form-group
