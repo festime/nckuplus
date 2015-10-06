@@ -58,6 +58,7 @@ gem 'mini_magick'
 gem 'paperclip'
 gem 'aws-sdk', '< 2.0'
 gem 'ckeditor'
+gem 'momentjs-rails'
 #gem 'pundit'
 #gem 'impressionist'
 

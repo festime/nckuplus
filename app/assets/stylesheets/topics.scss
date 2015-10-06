@@ -2,19 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-@mixin noPadding($top: initial, $bottom: initial, $left: initial, $right: initial) {
-  padding-top: $top;
-  padding-bottom: $bottom;
-  padding-left: $left;
-  padding-right: $right;
-}
-
 #new-topic {
   float: right;
 }
 
 .avatar-wrapper {
-  padding: 0px;
+  border-top: thin outset;
+  padding: 4px 0 0 0;
   width: initial;
 }
 
@@ -32,12 +26,10 @@
   margin-top: 17px;
 }
 
-.hr-wrapper {
-  padding-left: 0px;
-}
-
-hr {
-  margin-left: 0px;
+.post-wrapper {
+  border-top: thin outset;
+  padding-top: 4px;
+  padding-left: 10px;
 }
 
 /*#dropdownMenu1 {*/

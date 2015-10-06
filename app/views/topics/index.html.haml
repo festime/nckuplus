@@ -1,5 +1,4 @@
 .row
-  = render 'navigation_bar'
   %table.table.table-hover
     %thead
       %tr
@@ -13,7 +12,7 @@
       - @topics.each do |topic|
         %tr
           %td.col-xs-7= link_to topic.title, topic
-          %td.col-xs-1.text-center 修課
+          %td.col-xs-1.text-center= topic.category
           %td.col-xs-1.text-center
             = image_tag topic.user.avatar.url(:original), class: "img-circle img-responsive avatar-image"
           %td.col-xs-1.text-center= topic.reply_count

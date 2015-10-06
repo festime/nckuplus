@@ -1,0 +1,19 @@
+.row
+  #navigation-bar
+    .dropdown
+      %button#dropdownMenu1.btn.btn-default.dropdown-toggle{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+        所有分類
+        %span.caret
+      %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1"}
+        %li
+          %a{:href => "#"} 修課
+        %li
+          %a{:href => "#"} 報雷
+        %li
+          %a{:href => "#"} 轉系輔系雙主修
+        %li
+          %a{:href => "#"} 研究所
+      #new-topic
+        = link_to new_topic_path, class: "btn btn-success" do
+          %i.fa.fa-plus
+          新增主題
