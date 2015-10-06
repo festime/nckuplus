@@ -2,7 +2,10 @@ class TopicsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @topics = Topic.all
+    respond_to do |format|
+      format.html { @topics = Topic.all }
+      format.json { render :json => Topic.pluck(:id).to_s }
+    end
   end
 
   def show
