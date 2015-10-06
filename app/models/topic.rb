@@ -5,6 +5,8 @@ class Topic < ActiveRecord::Base
 
   validates :title, presence: true
 
+  default_scope { order(created_at: :desc) }
+
   def reply_count
     self.posts.count - 1
   end

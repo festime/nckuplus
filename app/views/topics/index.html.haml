@@ -17,7 +17,7 @@
             = image_tag topic.user.avatar.url(:original), class: "img-circle img-responsive avatar-image"
           %td.col-xs-1.text-center= topic.reply_count
           %td.col-xs-1.text-center 123
-          %td.col-xs-1.text-center 19h
+          %td.col-xs-1.text-center= topic.last_reply_at
       - 3.times do
         %tr
           %td.col-xs-7 成大附近有什麼好吃的啊？

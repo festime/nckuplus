@@ -16,4 +16,5 @@
 //= require turbolinks
 //= require ckeditor/init
 //= require moment
+//= require moment/zh-tw.js
 //= require_tree .
