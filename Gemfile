@@ -59,7 +59,7 @@ gem 'paperclip'
 gem 'aws-sdk', '< 2.0'
 gem 'ckeditor'
 gem 'momentjs-rails'
-#gem 'pundit'
+gem 'pundit'
 #gem 'impressionist'
 
 gem 'better_errors', group: 'development'

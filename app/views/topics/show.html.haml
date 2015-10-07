@@ -1,8 +1,3 @@
--#.row
-  -#%h1= @topic.title
--#.row
-  -#.col-xs-8.hr-wrapper
-    -#%hr
 .row
   %h1= @topic.title
 - @topic.posts.each do |post|
@@ -15,3 +10,6 @@
         .post-date 2015/9/29
       .post-content
         = post.content.html_safe
+      - if policy(post).edit?
+        %div
+          = link_to "編輯貼文", edit_post_path(post)
