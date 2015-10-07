@@ -7,7 +7,7 @@
     .col-xs-7.post-wrapper
       %div
         %span= post.user.name
-        .post-date 2015/9/29
+        .post-date= post.created_at
       .post-content
         = post.content.html_safe
       - if policy(post).edit?

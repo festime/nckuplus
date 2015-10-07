@@ -4,7 +4,13 @@ class TopicsController < ApplicationController
   def index
     respond_to do |format|
       format.html { @topics = Topic.all }
-      format.json { render :json => Topic.pluck(:id).to_s }
+      format.json do
+        topics_id = Topic.pluck(:id).map { |id| "topic-#{id}" }
+        topics_time = Topic.pluck(:created_at)
+        json = (Hash[*(topics_id.zip(topics_time).flatten)]).to_json
+
+        render :json => json
+      end
     end
   end
 
