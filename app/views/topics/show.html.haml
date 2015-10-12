@@ -7,7 +7,7 @@
     .col-xs-7.post-wrapper
       %div
         %span= post.user.name
-        .post-date= post.created_at
+        .post-date{:id => "post-#{post.id}"}
       .post-content
         = post.content.html_safe
       - if policy(post).edit?
