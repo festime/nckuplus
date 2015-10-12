@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  resources :posts
   root 'topics#index'
 
-  resources :topics
+  resources :topics do
+    resources :posts
+  end
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 

@@ -1,5 +1,6 @@
 .row
   %h1= @topic.title
+  = link_to "回覆主題", new_topic_post_path(@topic)
 - @topic.posts.each do |post|
   .row
     .col-xs-1.avatar-wrapper
@@ -12,4 +13,4 @@
         = post.content.html_safe
       - if policy(post).edit?
         %div
-          = link_to "編輯貼文", edit_post_path(post)
+          = link_to "編輯貼文", edit_topic_post_path(@topic, post)
