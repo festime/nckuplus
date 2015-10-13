@@ -2,7 +2,7 @@
   %h1= @topic.title
   = link_to "回覆主題", new_topic_post_path(@topic)
 - @topic.posts.each do |post|
-  .row
+  .row.post
     .col-xs-1.avatar-wrapper
       = image_tag post.user.avatar.url(:original), class: "img-circle img-responsive avatar-image"
     .col-xs-7.post-wrapper
