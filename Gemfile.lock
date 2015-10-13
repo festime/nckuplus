@@ -40,6 +40,7 @@ GEM
     autoprefixer-rails (6.0.3)
       execjs
       json
+    awesome_print (1.6.1)
     aws-sdk (1.66.0)
       aws-sdk-v1 (= 1.66.0)
     aws-sdk-v1 (1.66.0)
@@ -83,6 +84,13 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.6.0)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.5.0)
+      factory_girl (~> 4.5.0)
+      railties (>= 3.0.0)
+    faker (1.4.3)
+      i18n (~> 0.5)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
     figaro (1.1.1)
@@ -158,6 +166,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-rails (0.3.4)
+      pry (>= 0.9.10)
     puma (2.14.0)
     pundit (1.0.1)
       activesupport (>= 3.0.0)
@@ -223,6 +233,8 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     sexp_processor (4.6.0)
+    shoulda-matchers (3.0.0)
+      activesupport (>= 4.0.0)
     slop (3.6.0)
     spring (1.4.0)
     sprockets (3.3.5)
@@ -254,6 +266,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   aws-sdk (< 2.0)
   better_errors
   bootstrap-sass (~> 3.3.5)
@@ -261,6 +274,8 @@ DEPENDENCIES
   ckeditor
   coffee-rails (~> 4.1.0)
   devise
+  factory_girl_rails (~> 4.0)
+  faker
   figaro
   font-awesome-rails
   haml
@@ -274,12 +289,14 @@ DEPENDENCIES
   paperclip
   pg
   pry
+  pry-rails
   puma
   pundit
   rails (= 4.2.4)
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  shoulda-matchers (~> 3.0)
   spring
   sqlite3
   turbolinks
