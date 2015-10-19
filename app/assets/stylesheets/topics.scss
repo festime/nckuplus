@@ -2,37 +2,92 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@mixin avatar-settings {
+  border-top: thin outset;
+  padding: 4px 0 0 0;
+  width: initial;
+}
+
 #new-topic {
   float: right;
 }
 
 .post {
-  margin: 0 0 10px 0;
-
-  .avatar-wrapper {
-    border-top: thin outset;
-    padding: 4px 0 0 0;
-    width: initial;
-
-    .avatar-image {
-      margin: 0 auto;
-      display: initial;
-      max-width: 25px;
-    }
-  }
-
-  .post-wrapper {
-    border-top: thin outset;
-    padding-top: 4px;
-    padding-left: 10px;
-
-    .post-date {
-      float: right;
-    }
-
-    .post-content {
-      margin-top: 17px;
-    }
-  }
+  border-top: 2px outset;
+  padding-top: 5px;
 }
+
+.comment {
+  border-top: 2px outset;
+  padding-top: 5px;
+}
+
+.post-wrapper {
+  border-top: thin outset;
+}
+
+.avatar-wrapper {
+  padding-right: 0;
+}
+
+.post-header {
+  overflow: auto;
+}
+
+.post-username {
+  float: left;
+}
+
+.post-time {
+  float: right;
+}
+
+/* .help-block { */
+  /* display: none; */
+/* } */
+
+/* .post { */
+  /* margin: 0 0 10px 0; */
+
+  /* .avatar-wrapper { */
+    /* @include avatar-settings; */
+
+    /* .avatar-image { */
+      /* margin: 0 auto; */
+      /* display: initial; */
+      /* max-width: 25px; */
+    /* } */
+  /* } */
+
+  /* .post-wrapper { */
+    /* border-top: thin outset; */
+    /* padding-top: 4px; */
+    /* padding-left: 10px; */
+
+    /* .post-date { */
+      /* float: right; */
+    /* } */
+
+    /* .post-content { */
+      /* margin-top: 17px; */
+    /* } */
+  /* } */
+
+  /* .comment-wrapper { */
+    /* padding: 4px 0 0 0; */
+    /* margin-left: 20px; */
+    /* border-top: thin outset; */
+
+    /* img { */
+      /* float: left; */
+    /* } */
+    /* .avatar-wrapper { */
+      /* @include avatar-settings; */
+    /* } */
+    
+    /* .comment-body { */
+
+    /* } */
+  /* } */
+/* } */
 

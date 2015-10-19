@@ -5,5 +5,6 @@
 //= require ckeditor/init
 //= require moment
 //= require moment/zh-tw.js
+//= require rails.validations
 //= require init
 //= require_tree ./topics
