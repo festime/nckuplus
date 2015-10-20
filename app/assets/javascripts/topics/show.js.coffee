@@ -8,6 +8,15 @@ $(document).on 'page:change', ->
     messageObj = inputObj.next()
     messageObj.html('')
     messageObj.hide()
+
+  resizePostHeader = (header, height) ->
+    header.height(height)
+
+  heightOfAvatars = $('.avatar-wrapper').map ->
+    return $(@).height()
+
+  $('.post-header').each (index, header) ->
+    $(@).height(heightOfAvatars[index])
   
   $('.comment-body-form').each ->
     $(@).bind "propertychange change click keyup input paste", ->
@@ -31,9 +40,18 @@ $(document).on 'page:change', ->
     return
   return
 
-
 $(document).on 'page:change', ->
   return unless $(".topics.show").length > 0
-  App.Topics.showTimeFormatUpdate()
+  App.updateTimeFormat()
+
+  idOfPosts = $('span')
+    .filter ->
+      return this.id.match(/post-[0-9]+$/)
+    .map ->
+      return $(@).attr("id").match(/[0-9]+/)
+
+  idOfPosts.each (index, postId) ->
+    App.updateTimeFormat('/posts/' + postId + '/comments')
+    return
 return
 

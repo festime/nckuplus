@@ -1,26 +1,13 @@
-App.Topics =
-  indexTimeFormatUpdate: ->
-    $.ajax
-      url: '/topics'
-      dataType: 'json'
-      data: {}
-      success: (timeFormatInJson) ->
-        for topicId of timeFormatInJson
-          topicCreatedAt = timeFormatInJson[topicId]
-          currentTime = moment()
+App.updateTimeFormat = (url = window.location.pathname) ->
+  $.ajax
+    url: url
+    dataType: 'json'
+    data: {}
+    success: (timeFormatInJson) ->
+      for domId of timeFormatInJson
+        createdAt = timeFormatInJson[domId]
 
-          $("#" + topicId).html(moment(topicCreatedAt).fromNow())
-        return
-    return
-
-  showTimeFormatUpdate: ->
-    $.ajax
-      url: window.location.pathname
-      dataType: 'json'
-      data: {}
-      success: (timeFormatInJson) ->
-        for topicId of timeFormatInJson
-          $("#" + topicId).html(moment(timeFormatInJson[topicId]).fromNow())
-        return
-    return
+        $("#" + domId).html(moment(createdAt).fromNow())
+      return
+  return
 

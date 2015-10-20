@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   end
 
   resources :posts, only: [] do
-    resources :comments, only: [:create, :update, :destroy]
+    resources(
+      :comments,
+      only: [:index, :create, :update, :destroy],
+      controller: "posts/comments"
+    )
   end
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }

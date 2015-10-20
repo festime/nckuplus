@@ -11,14 +11,14 @@
         .col-md-11.col-xs-10
           .post-header
             %span.post-username= post.user.name
-            %span.post-time 2015/5/13
+            %span.post-time{id: "post-#{post.id}"}
           .post-content
             = post.content.html_safe
           .well.well-sm
-            %a{"aria-controls" => "post-#{post.id}", "aria-expanded" => "false", "data-toggle" => "collapse", :href => "#post-#{post.id}-comment", :role => "button"}
+            %a{"aria-controls" => "post-#{post.id}", "aria-expanded" => "false", "data-toggle" => "collapse", :href => "#new-comment-of-post-#{post.id}", :role => "button"}
               %i.fa.fa-reply
               留言
-            .collapse{:id => "post-#{post.id}-comment"}
+            .collapse{:id => "new-comment-of-post-#{post.id}"}
               = form_for [post, Comment.new], validate: true do |f|
                 .form-group
                   = f.text_field :body, class: "form-control comment-body-form", placeholder: "輸入完按下 Enter 即可送出留言", required: true, maxlength: 80
@@ -27,14 +27,15 @@
               = link_to edit_topic_post_path(@topic, post) do
                 %i.glyphicon.glyphicon-pencil
                 編輯
-        .col-md-11.col-md-offset-1.col-xs-10.col-xs-offset-2
-          .row.comment
-            .col-md-1.col-xs-2.avatar-wrapper
-              = image_tag post.user.avatar.url(:original), class: "img-circle img-responsive avatar-image"
-            .col-md-11.col-xs-10
-              .post-header
-                %span.post-username= post.user.name
-                %span.post-time 2015/5/13
-              .post-content
-                = post.content.html_safe
+        - post.comments.each do |comment|
+          .col-md-11.col-md-offset-1.col-xs-10.col-xs-offset-2
+            .row.comment
+              .col-md-1.col-xs-2.avatar-wrapper
+                = image_tag comment.user.avatar.url(:original), class: "img-circle img-responsive avatar-image"
+              .col-md-11.col-xs-10
+                .post-header
+                  %span.post-username= comment.user.name
+                  %span.post-time{id: "post-#{comment.post.id}-comment-#{comment.id}"} 2015/5/13
+                .post-content
+                  = comment.body.html_safe
 
