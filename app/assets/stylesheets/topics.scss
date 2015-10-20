@@ -1,93 +1,120 @@
-// Place all the styles related to the topics controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap/variables";
 
-@mixin avatar-settings {
-  border-top: thin outset;
-  padding: 4px 0 0 0;
-  width: initial;
+@mixin distance-between-avatar-text {
+  padding-left: 10px;
 }
 
 #new-topic {
   float: right;
 }
 
+
+
 .post {
   border-top: 2px outset;
   padding-top: 5px;
 }
 
-.comment {
-  border-top: 2px outset;
-  padding-top: 5px;
-}
-
-.post-wrapper {
-  border-top: thin outset;
-}
-
 .avatar-wrapper {
-  padding-right: 0;
-}
-
-.post-header {
-  overflow: auto;
-}
-
-.post-username {
   float: left;
 }
 
-.post-time {
-  float: right;
+.post-wrapper {
+  // 目前設定，開關這個選項有助於 RWD 
+  /* overflow: hidden; */
+  margin-bottom: 10px;
+
+  .post-header {
+    @include distance-between-avatar-text;
+
+    @media (max-width: $screen-xs-max) { 
+    }
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) { 
+    }
+    @media (min-width: $screen-md-min) and (max-width: $screen-md-max) { 
+    }
+    @media (min-width: $screen-lg-min) { 
+    }
+    overflow: auto;
+
+    .post-username {
+      float: left;
+      /* padding-left: 5px; */
+    }
+
+    .post-time {
+      float: right;
+    }
+  }
+
+  .post-content {
+    @include distance-between-avatar-text;
+
+    @media (max-width: $screen-xs-max) { 
+      clear: both;
+    }
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) { 
+      margin-top: 20px;
+      overflow: hidden;
+    }
+    @media (min-width: $screen-md-min) and (max-width: $screen-md-max) { 
+      margin-top: 20px;
+      overflow: hidden;
+    }
+    @media (min-width: $screen-lg-min) { 
+      margin-top: 20px;
+      overflow: hidden;
+    }
+  }
 }
 
-/* .help-block { */
-  /* display: none; */
-/* } */
+.comment-wrapper {
+  padding-top: 5px;
+  border-top: 2px outset;
+  margin-bottom: 20px;
+  margin-left: 50px;
 
-/* .post { */
-  /* margin: 0 0 10px 0; */
+  clear: both;
+  .comment-header {
+    @include distance-between-avatar-text;
 
-  /* .avatar-wrapper { */
-    /* @include avatar-settings; */
+    @media (max-width: $screen-xs-max) { 
+    }
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) { 
+    }
+    @media (min-width: $screen-md-min) and (max-width: $screen-md-max) { 
+    }
+    @media (min-width: $screen-lg-min) { 
+    }
+    overflow: auto;
 
-    /* .avatar-image { */
-      /* margin: 0 auto; */
-      /* display: initial; */
-      /* max-width: 25px; */
-    /* } */
-  /* } */
+    .comment-username {
+      float: left;
+    }
 
-  /* .post-wrapper { */
-    /* border-top: thin outset; */
-    /* padding-top: 4px; */
-    /* padding-left: 10px; */
+    .comment-time {
+      float: right;
+    }
+  }
 
-    /* .post-date { */
-      /* float: right; */
-    /* } */
+  .comment-body {
+    @include distance-between-avatar-text;
 
-    /* .post-content { */
-      /* margin-top: 17px; */
-    /* } */
-  /* } */
-
-  /* .comment-wrapper { */
-    /* padding: 4px 0 0 0; */
-    /* margin-left: 20px; */
-    /* border-top: thin outset; */
-
-    /* img { */
-      /* float: left; */
-    /* } */
-    /* .avatar-wrapper { */
-      /* @include avatar-settings; */
-    /* } */
-    
-    /* .comment-body { */
-
-    /* } */
-  /* } */
-/* } */
+    @media (max-width: $screen-xs-max) { 
+      clear: both;
+    }
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) { 
+      margin-top: 20px;
+      overflow: hidden;
+    }
+    @media (min-width: $screen-md-min) and (max-width: $screen-md-max) { 
+      margin-top: 20px;
+      overflow: hidden;
+    }
+    @media (min-width: $screen-lg-min) { 
+      margin-top: 20px;
+      overflow: hidden;
+    }
+  }
+}
 

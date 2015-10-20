@@ -8,9 +8,9 @@
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
   %body{:class => "#{ controller_name } #{ action_name }"}
     = render 'shared/fb_script'
+    = render 'shared/header'
     .container
-      = render 'shared/header'
-      = render 'shared/navigation_bar'
+      -# = render 'shared/navigation_bar'
       -#%p.notice= notice
       -#%p.alert= alert
       = yield

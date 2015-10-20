@@ -9,15 +9,6 @@ $(document).on 'page:change', ->
     messageObj.html('')
     messageObj.hide()
 
-  resizePostHeader = (header, height) ->
-    header.height(height)
-
-  heightOfAvatars = $('.avatar-wrapper').map ->
-    return $(@).height()
-
-  $('.post-header').each (index, header) ->
-    $(@).height(heightOfAvatars[index])
-  
   $('.comment-body-form').each ->
     $(@).bind "propertychange change click keyup input paste", ->
       inputLength = $(@).val().length
@@ -38,9 +29,7 @@ $(document).on 'page:change', ->
           showErrorMessage($(@))
           e.preventDefault()
     return
-  return
 
-$(document).on 'page:change', ->
   return unless $(".topics.show").length > 0
   App.updateTimeFormat()
 
@@ -52,6 +41,5 @@ $(document).on 'page:change', ->
 
   idOfPosts.each (index, postId) ->
     App.updateTimeFormat('/posts/' + postId + '/comments')
-    return
-return
+  return
 
