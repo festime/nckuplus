@@ -4,15 +4,43 @@
   padding-left: 10px;
 }
 
+@mixin action-button {
+  &:hover {
+    transition: 0.2s background-color;
+    background-color: #eeeeee;
+    cursor: pointer;
+    text-decoration: none;
+
+    i, span {
+      color: black;
+    }
+  }  
+  padding: 10px;
+  
+  i, span {
+    color: #999;
+  }
+}
+
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 #new-topic {
   float: right;
 }
 
 
+.glyphicon-chevron-up {
+  display: none;
+}
 
 .post {
   border-top: 2px outset;
-  padding-top: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .avatar-wrapper {
@@ -20,8 +48,6 @@
 }
 
 .post-wrapper {
-  // 目前設定，開關這個選項有助於 RWD 
-  /* overflow: hidden; */
   margin-bottom: 10px;
 
   .post-header {
@@ -39,7 +65,6 @@
 
     .post-username {
       float: left;
-      /* padding-left: 5px; */
     }
 
     .post-time {
@@ -66,6 +91,10 @@
       overflow: hidden;
     }
   }
+}
+
+.comments {
+  display: none;
 }
 
 .comment-wrapper {
@@ -116,5 +145,25 @@
       overflow: hidden;
     }
   }
+}
+
+.show-comments {
+  @include action-button;
+  float: left;
+}
+
+.create-comments {
+  @include action-button;
+  float: right;
+}
+
+.edit-post {
+  @include action-button;
+  float: right;
+}
+
+.new-comment {
+  display: none;
+  clear: both;
 }
 

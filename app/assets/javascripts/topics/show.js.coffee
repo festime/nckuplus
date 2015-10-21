@@ -30,6 +30,24 @@ $(document).on 'page:change', ->
           e.preventDefault()
     return
 
+  $('.create-comments').click ->
+    inputTextId = $(@).data('target-id')
+    $('#' + inputTextId).toggle()
+    setTimeout (->
+      try
+        if $('#' + inputTextId).is(":visible")
+          $('#' + inputTextId).find('.comment-body-form').focus()
+      catch e
+        console.log(e)
+      return
+    ), 100
+
+  $('[id^="show-comments-of-post"]').click ->
+    commentsId = $(@).attr('id').substring(5)
+    $('#' + commentsId).toggle()
+    $(@).children('.glyphicon-chevron-up').toggle()
+    $(@).children('.glyphicon-chevron-down').toggle()
+
   return unless $(".topics.show").length > 0
   App.updateTimeFormat()
 
@@ -41,5 +59,4 @@ $(document).on 'page:change', ->
 
   idOfPosts.each (index, postId) ->
     App.updateTimeFormat('/posts/' + postId + '/comments')
-  return
 
