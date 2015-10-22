@@ -28,9 +28,6 @@ a {
   }
 }
 
-#new-topic {
-  float: right;
-}
 
 
 .glyphicon-chevron-up {
@@ -165,5 +162,11 @@ a {
 .new-comment {
   display: none;
   clear: both;
+}
+
+.small-screen-hidden {
+  @media (max-width: 480px) {
+    display: none !important;
+  }
 }
 

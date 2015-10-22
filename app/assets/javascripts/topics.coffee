@@ -14,7 +14,3 @@ App.FormatTime =
         return
     return
 
-$(document).on 'page:change', ->
-  return unless $(".topics.index").length > 0
-  App.FormatTime.update()
-

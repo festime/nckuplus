@@ -7,3 +7,5 @@
 //= require moment/zh-tw.js
 //= require init
 //= require_tree ./topics
+//= require header
+
