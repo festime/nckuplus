@@ -1,0 +1,61 @@
+@import "bootstrap/variables";
+
+tr {
+  td {
+    text-align: center;
+    /* @media (max-width: $screen-xs-max) { */
+      /* padding: 5px !important; */
+    /* } */
+    img {
+      margin: 0 auto;
+    }
+  }
+}
+
+#topic-list {
+  width: 100%;
+
+  .topic {
+    border-bottom: 1px solid #e9e9e9;
+  }
+
+  .topic-title {
+    text-align: left;
+    @media (max-width: $screen-xs-max) {
+      display: inline-block;
+      max-width: 80%;
+    }
+    font-size: 1.2em;
+  }
+
+  .topic-state {
+    @media (max-width: $screen-xs-max) {
+      margin-top: 10px;
+    }
+  }
+
+  .topic-category {
+    @media (max-width: $screen-xs-max) {
+      padding-bottom: 5px;
+    }
+    color: #aaa;
+  }
+
+  .topic-last-reply-time {
+    @media (max-width: $screen-xs-max) {
+      float: right;
+      padding-bottom: 5px;
+      padding-right: 15px;
+    }
+    color: #aaa;
+  }
+
+  .topic-username {
+    @media (max-width: $screen-xs-max) {
+      float: right;
+      padding-bottom: 5px;
+    }
+    color: #777;
+  }
+}
+

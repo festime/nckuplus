@@ -1,22 +1,39 @@
 .row
-  .col-md-10.col-xs-12
-    %table.table
+  .col-md-10.col-md-offset-1.col-xs-12
+    %table.table#topic-list
       %thead
         %tr
-          %th.col-md-7.col-xs-6 主題
-          %th.col-md-1.col-xs-2.text-center 分類
-          %th.col-md-1.col-xs-2.text-center 作者
-          %th.col-md-1.text-center.small-screen-hidden{"data-small-screen" => "hide"} 回覆
-          %th.col-md-1.col-xs-2.text-center 觀看
-          %th.col-md-1.text-center.small-screen-hidden{"data-small-screen" => "hide"} 最後回覆
+          %th.col-md-7 主題
+          %th.col-md-1.text-center 分類
+          %th.col-md-1.text-center 作者
+          %th.col-md-1.text-center 回覆
+          %th.col-md-1.text-center 觀看
+          %th.col-md-1.text-center 最後回覆
       %tbody
         - @topics.each do |topic|
-          %tr
-            %td.col-md-7.col-xs-6= link_to topic.title, topic
-            %td.col-md-1.col-xs-2.text-center= topic.category
-            %td.col-md-1.col-xs-2.text-center
-              = image_tag topic.user.avatar.url(:original), class: "img-circle img-responsive avatar-image"
-            %td.col-md-1.text-center.small-screen-hidden{"data-small-screen" => "hide"}= topic.reply_count
-            %td.col-md-1.col-xs-2.text-center 123
-            %td.col-md-1.text-center.small-screen-hidden{:id => "topic-#{topic.id}", "data-small-screen" => "hide"}
+          %tr{data: {"topic-id" => topic.id}}
+            %td.col-md-7.topic-title= link_to topic.title, topic
+            %td.col-md-1.topic-category 測試
+            %td.col-md-1.topic-user
+              = image_tag topic.user.avatar.url(:original), class: "img-circle img-responsive avatar-image", alt: topic.user.name
+            %td.col-md-1= topic.reply_count
+            %td.col-md-1.topic-visitor-count 123
+            %td.col-md-1.topic-last-reply-time{:id => "topic-#{topic.id}"}
 
+    -# %table#topic-list
+      -# %tbody
+        -# - @topics.each do |topic|
+          -# %tr.topic
+            -# %td
+              -# %div
+                -# %div.clearfix
+                  -# %div.pull-left.topic-title
+                    -# = topic.title
+                  -# %div.topic-visitor-count.pull-right
+                    -# 123
+                -# %div.topic-state.clearfix
+                  -# %div.topic-category.pull-left
+                    -# %span 修課
+                  -# %div.pull-right
+                    -# %span.topic-username Yulin Chen
+                    -# %span.topic-last-reply-time 1h
