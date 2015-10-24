@@ -2,9 +2,9 @@
   .col-xs-12
     %h1= @topic.title
     = link_to "回覆主題", new_topic_post_path(@topic)
-- @topic.posts.each do |post|
-  .row
-    .col-md-8.col-sm-12.post
+.row
+  .col-md-8.col-sm-12.post
+    - @topic.posts.each do |post|
       .avatar-wrapper
         = image_tag post.user.avatar.url(:original), class: "img-circle img-responsive avatar-image"
       .post-wrapper
@@ -46,4 +46,8 @@
                 %span{id: "post-#{comment.post.id}-comment-#{comment.id}"} 2015/5/13
             .comment-body
               = comment.body.html_safe
+  .col-md-3.col-md-offset-1
+    .list-group
+      %button.list-group-item{:type => "button"}
+        = link_to "回文", new_topic_post_path(@topic)
 

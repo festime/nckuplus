@@ -2,13 +2,12 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    @topic = Topic.find(topic_params)
+    @topic = Topic.find(params[:topic_id])
     @post = Post.new
   end
 
   def create
     @post = current_user.posts.build(post_params)
-    binding.pry
 
     if @post.save
       redirect_to @post.topic

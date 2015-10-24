@@ -6,7 +6,7 @@ class TopicsController < ApplicationController
       format.html { @topics = Topic.all }
       format.json do
         topics_id = Topic.pluck(:id).map { |id| "topic-#{id}" }
-        topics_time = Topic.pluck(:created_at)
+        topics_time = Topic.pluck(:last_reply_at)
         json = (Hash[*(topics_id.zip(topics_time).flatten)]).to_json
 
         render :json => json
