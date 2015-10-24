@@ -1,0 +1,8 @@
+- if @comment.errors.any?
+  alert("你的留言似乎出了點問題，請重新整理或稍後再試一次");
+- else
+  var commentBody = $('[data-post-id="#{@comment.post.id}"][data-comment-id="#{@comment.id}"]');
+  commentBody.html('#{@comment.body}');
+  commentBody.show();
+  commentBody.prevAll('form').hide();
+

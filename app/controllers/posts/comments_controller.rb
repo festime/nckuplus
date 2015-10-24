@@ -10,9 +10,6 @@ class Posts::CommentsController < ApplicationController
         end
         comments_time = post.comments.pluck(:created_at)
         json = (Hash[*(comments_id.zip(comments_time).flatten)]).to_json
-        # topics_id = Topic.pluck(:id).map { |id| "topic-#{id}" }
-        # topics_time = Topic.pluck(:created_at)
-        # json = (Hash[*(topics_id.zip(topics_time).flatten)]).to_json
 
         render :json => json
       end
@@ -28,6 +25,16 @@ class Posts::CommentsController < ApplicationController
         @comment.save
         redirect_to :back
       end
+    end
+  end
+
+  def update
+    @comment = Comment.find(params[:id])
+    authorize @comment
+    @comment.update(comment_params)
+
+    respond_to do |format|
+      format.js
     end
   end
 

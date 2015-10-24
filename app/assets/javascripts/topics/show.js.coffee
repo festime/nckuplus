@@ -48,6 +48,28 @@ $(document).on 'page:change', ->
     $(@).children('.glyphicon-chevron-up').toggle()
     $(@).children('.glyphicon-chevron-down').toggle()
 
+  $('.edit-comment').click ->
+    commentBody = $(@).prev()
+    commentBody.hide()
+
+    commentForm = $(@).prevAll('.edit_comment')
+    commentForm.show()
+    commentForm.find('input').focus()
+    strLength = commentBody.html().length * 2
+    commentForm.find('input[type=text]')[0].setSelectionRange(strLength, strLength)
+    # $.ajax
+      # url: ''
+      # dataType: 'json'
+      # cache: false
+      # data: {}
+      # success: (timeFormatInJson) ->
+        # for domId of timeFormatInJson
+          # createdAt = timeFormatInJson[domId]
+
+          # $("#" + domId).html(moment(createdAt).fromNow())
+        # return
+    # return
+
   return unless $(".topics.show").length > 0
   App.updateTimeFormat()
 
