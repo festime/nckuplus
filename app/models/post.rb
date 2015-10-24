@@ -1,5 +1,8 @@
 class Post < ActiveRecord::Base
   after_create :update_topic_last_replay_at
+
+  default_scope { order('created_at') }
+
   belongs_to :topic
   belongs_to :user
   has_many   :comments
