@@ -1,7 +1,6 @@
 .row
   .col-xs-12
-    %h1= @topic.title
-    = link_to "回覆主題", new_topic_post_path(@topic)
+    %h2= @topic.title
 .row
   .col-md-8.col-sm-12
     - @topic.posts.each do |post|
@@ -22,14 +21,15 @@
                   %i.glyphicon.glyphicon-chevron-up
                   %i.glyphicon.glyphicon-chevron-down
                   %span #{post.comments.count} 則留言
-              .create-comments{data: {"target-id" => "new-comment-of-post-#{post.id}"}}
-                %i.fa.fa-reply
-                %span 留言
-              .edit-post
-                - if policy(post).edit?
-                  = link_to edit_topic_post_path(@topic, post) do
-                    %i.glyphicon.glyphicon-pencil
-                    %span 編輯
+              - if user_signed_in?
+                .create-comments{data: {"target-id" => "new-comment-of-post-#{post.id}"}}
+                  %i.fa.fa-reply
+                  %span 留言
+                .edit-post
+                  - if policy(post).edit?
+                    = link_to edit_topic_post_path(@topic, post) do
+                      %i.glyphicon.glyphicon-pencil
+                      %span 編輯
             .new-comment{id: "new-comment-of-post-#{post.id}"}
               = form_for [post, Comment.new], validate: true do |f|
                 .form-group
@@ -59,7 +59,8 @@
                       %span 編輯
 
   .col-md-3.col-md-offset-1
-    .list-group
-      %button.list-group-item{:type => "button"}
-        = link_to "回文", new_topic_post_path(@topic)
+    - if user_signed_in?
+      .list-group
+        %button.list-group-item{:type => "button"}
+          = link_to "回文", new_topic_post_path(@topic)
 
