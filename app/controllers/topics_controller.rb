@@ -17,12 +17,11 @@ class TopicsController < ApplicationController
   def show
     respond_to do |format|
       format.html do
-        # @topic = Topic.find(params[:id])
         @topic = Topic.friendly.find(params[:id])
       end
 
       format.json do
-        topic = Topic.find(params[:id])
+        topic = Topic.friendly.find(params[:id])
         posts_id = topic.posts.pluck(:id).map { |id| "post-#{id}" }
         posts_time = topic.posts.pluck(:created_at)
         json = (Hash[*(posts_id.zip(posts_time).flatten)]).to_json
