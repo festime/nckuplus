@@ -54,21 +54,13 @@ $(document).on 'page:change', ->
 
     commentForm = $(@).prevAll('.edit_comment')
     commentForm.show()
-    commentForm.find('input').focus()
-    strLength = commentBody.html().length * 2
+    commentForm.find('input[type=text]').focus()
+    strLength = commentForm.find('input[type=text]').attr('value').length * 2
     commentForm.find('input[type=text]')[0].setSelectionRange(strLength, strLength)
-    # $.ajax
-      # url: ''
-      # dataType: 'json'
-      # cache: false
-      # data: {}
-      # success: (timeFormatInJson) ->
-        # for domId of timeFormatInJson
-          # createdAt = timeFormatInJson[domId]
 
-          # $("#" + domId).html(moment(createdAt).fromNow())
-        # return
-    # return
+    commentForm.focusout ->
+      commentForm.hide()
+      commentBody.show()
 
   return unless $(".topics.show").length > 0
   App.updateTimeFormat()

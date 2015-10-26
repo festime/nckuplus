@@ -3,59 +3,60 @@
     %h1= @topic.title
     = link_to "回覆主題", new_topic_post_path(@topic)
 .row
-  .col-md-8.col-sm-12.post
+  .col-md-8.col-sm-12
     - @topic.posts.each do |post|
-      .avatar-wrapper
-        = image_tag post.user.avatar.url(:original), class: "img-circle img-responsive avatar-image"
-      .post-wrapper
-        .post-header
-          .post-username
-            %span= post.user.name
-          .post-time
-            %span{id: "post-#{post.id}"}
-        .post-content
-          = post.content.html_safe
-          %div.clearfix
-            - if post.comments.count > 0
-              %div.show-comments{id: "show-comments-of-post-#{post.id}"}
-                %i.glyphicon.glyphicon-chevron-up
-                %i.glyphicon.glyphicon-chevron-down
-                %span #{post.comments.count} 則留言
-            .create-comments{data: {"target-id" => "new-comment-of-post-#{post.id}"}}
-              %i.fa.fa-reply
-              %span 留言
-            .edit-post
-              - if policy(post).edit?
-                = link_to edit_topic_post_path(@topic, post) do
-                  %i.glyphicon.glyphicon-pencil
-                  %span 編輯
-          .new-comment{id: "new-comment-of-post-#{post.id}"}
-            = form_for [post, Comment.new], validate: true do |f|
-              .form-group
-                = f.text_field :body, class: "form-control comment-body-form", placeholder: "輸入完按下 Enter 即可送出留言", required: true, maxlength: 80
-                %span.help-block
-      .comments{id: "comments-of-post-#{post.id}"}
-        - post.comments.each do |comment|
-          %div.comment-wrapper
-            .avatar-wrapper
-              = image_tag comment.user.avatar.url(:original), class: "img-circle img-responsive avatar-image"
-            .comment-header
-              .comment-username
-                %span= comment.user.name
-              .comment-time
-                %span{id: "post-#{comment.post.id}-comment-#{comment.id}"}
-            .comment-body
-              = form_for [post, comment], validate: true, remote: true do |f|
+      .post
+        .avatar-wrapper
+          = image_tag post.user.avatar.url(:original), class: "img-circle img-responsive avatar-image"
+        .post-wrapper
+          .post-header
+            .post-username
+              %span= post.user.name
+            .post-time
+              %span{id: "post-#{post.id}"}
+          .post-content
+            = post.content.html_safe
+            %div.clearfix
+              - if post.comments.count > 0
+                %div.show-comments{id: "show-comments-of-post-#{post.id}"}
+                  %i.glyphicon.glyphicon-chevron-up
+                  %i.glyphicon.glyphicon-chevron-down
+                  %span #{post.comments.count} 則留言
+              .create-comments{data: {"target-id" => "new-comment-of-post-#{post.id}"}}
+                %i.fa.fa-reply
+                %span 留言
+              .edit-post
+                - if policy(post).edit?
+                  = link_to edit_topic_post_path(@topic, post) do
+                    %i.glyphicon.glyphicon-pencil
+                    %span 編輯
+            .new-comment{id: "new-comment-of-post-#{post.id}"}
+              = form_for [post, Comment.new], validate: true do |f|
                 .form-group
                   = f.text_field :body, class: "form-control comment-body-form", placeholder: "輸入完按下 Enter 即可送出留言", required: true, maxlength: 80
                   %span.help-block
-              %p{data: {"post-id" => post.id, "comment-id" => comment.id}}
-                = comment.body.html_safe
-              .edit-comment
-                - if policy(comment).edit?
-                  %span
-                    %i.glyphicon.glyphicon-pencil
-                    %span 編輯
+        .comments{id: "comments-of-post-#{post.id}"}
+          - post.comments.each do |comment|
+            %div.comment-wrapper
+              .avatar-wrapper
+                = image_tag comment.user.avatar.url(:original), class: "img-circle img-responsive avatar-image"
+              .comment-header
+                .comment-username
+                  %span= comment.user.name
+                .comment-time
+                  %span{id: "post-#{comment.post.id}-comment-#{comment.id}"}
+              .comment-body
+                = form_for [post, comment], validate: true, remote: true do |f|
+                  .form-group
+                    = f.text_field :body, class: "form-control comment-body-form", placeholder: "輸入完按下 Enter 即可送出留言", required: true, maxlength: 80
+                    %span.help-block
+                %p{data: {"post-id" => post.id, "comment-id" => comment.id}}
+                  = comment.body.html_safe
+                .edit-comment
+                  - if policy(comment).edit?
+                    %span
+                      %i.glyphicon.glyphicon-pencil
+                      %span 編輯
 
   .col-md-3.col-md-offset-1
     .list-group

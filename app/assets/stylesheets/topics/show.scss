@@ -6,7 +6,8 @@
 
 @mixin action-button {
   &:hover {
-    transition: 0.2s background-color;
+    /* transition: 0.2s background-color; */
+    transition: background-color linear 0.15s;
     background-color: #eeeeee;
     cursor: pointer;
     text-decoration: none;
@@ -36,8 +37,7 @@ a {
 
 .post {
   border-top: 2px outset;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 10px 0;
 }
 
 .avatar-wrapper {
@@ -45,8 +45,6 @@ a {
 }
 
 .post-wrapper {
-  margin-bottom: 10px;
-
   .post-header {
     @include distance-between-avatar-text;
 
@@ -66,7 +64,6 @@ a {
 
     .post-time {
       float: right;
-      padding-right: 10px;
     }
   }
 
@@ -96,9 +93,9 @@ a {
 }
 
 .comment-wrapper {
-  padding-top: 5px;
+  /* padding-top: 5px 10px; */
+  padding: 10px 0;
   border-top: 2px outset;
-  margin-bottom: 20px;
   margin-left: 50px;
 
   clear: both;
@@ -145,6 +142,11 @@ a {
 
     form {
       display: none;
+    }
+
+    .edit-comment {
+      @include action-button;
+      float: right;
     }
   }
 }
