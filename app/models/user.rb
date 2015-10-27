@@ -26,6 +26,10 @@ class User < ActiveRecord::Base
   #}, default_url: "/images/:style/missing.png"
   #validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
+  def self.administrators
+    self.all.select {|user| user.is_admin? }
+  end
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
@@ -50,5 +54,9 @@ class User < ActiveRecord::Base
       :access_key_id => ENV["AWS_ACCESS_KEY_ID"],
       :secret_access_key => ENV["AWS_SECRET_ACCESS_KEY"]
     }
+  end
+
+  def is_admin?
+    Admin.find_by(email: self.email) ? true : false
   end
 end
