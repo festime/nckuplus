@@ -52,8 +52,8 @@
                     %span.help-block
                 %p{data: {"post-id" => post.id, "comment-id" => comment.id}}
                   = comment.body
-                .edit-comment
-                  - if policy(comment).edit?
+                - if policy(comment).edit?
+                  .edit-comment
                     %span
                       %i.glyphicon.glyphicon-pencil
                       %span 編輯
