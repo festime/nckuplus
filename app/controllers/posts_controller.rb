@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    @topic = Topic.find(params[:topic_id])
+    @topic = Topic.friendly.find(params[:topic_id])
     @post = Post.new
   end
 
@@ -35,7 +35,9 @@ class PostsController < ApplicationController
 private
 
   def post_params
-    params.require(:post).permit(:content).merge(topic_params)
+    params.require(:post).permit(:content).merge(
+     {topic_id: Topic.friendly.find(params(:topic_id).id)}
+    )
   end
 
   def topic_params

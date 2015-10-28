@@ -14,7 +14,7 @@
             .post-time
               %span{id: "post-#{post.id}"}
           .post-content
-            = post.content.html_safe
+            = post.content
             %div.clearfix
               - if post.comments.count > 0
                 %div.show-comments{id: "show-comments-of-post-#{post.id}"}
@@ -51,7 +51,7 @@
                     = f.text_field :body, class: "form-control comment-body-form", placeholder: "輸入完按下 Enter 即可送出留言", required: true, maxlength: 80
                     %span.help-block
                 %p{data: {"post-id" => post.id, "comment-id" => comment.id}}
-                  = comment.body.html_safe
+                  = comment.body
                 .edit-comment
                   - if policy(comment).edit?
                     %span

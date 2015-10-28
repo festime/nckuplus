@@ -21,3 +21,5 @@
 
 *.swp
 *.un~
+
+/node_modules
