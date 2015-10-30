@@ -63,7 +63,8 @@ $(document).on 'page:change', ->
       commentBody.show()
 
   return unless $(".topics.show").length > 0
-  App.updateTimeFormat()
+  pageUpdater = require('pageupdater')
+  pageUpdater.update()
 
   idOfPosts = $('span')
     .filter ->
@@ -72,5 +73,9 @@ $(document).on 'page:change', ->
       return $(@).attr("id").match(/[0-9]+/)
 
   idOfPosts.each (index, postId) ->
-    App.updateTimeFormat('/posts/' + postId + '/comments')
+    pageUpdater.update('/posts/' + postId + '/comments')
+
+  marked = require('marked')
+  $('.post-content').each ->
+    $(@).html(marked($(@).html().split(' ').join('\r\n')))
 

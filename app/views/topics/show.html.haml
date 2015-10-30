@@ -13,8 +13,9 @@
               %span= post.user.name
             .post-time
               %span{id: "post-#{post.id}"}
-          .post-content
-            = post.content
+          .post-body
+            .post-content
+              = post.content
             %div.clearfix
               - if post.comments.count > 0
                 %div.show-comments{id: "show-comments-of-post-#{post.id}"}

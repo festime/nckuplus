@@ -58,6 +58,7 @@ gem 'aws-sdk', '< 2.0'
 gem 'momentjs-rails'
 gem 'pundit'
 gem 'friendly_id', '~> 5.1.0'
+gem 'browserify-rails'
 #gem 'impressionist'
 
 gem 'better_errors', group: 'development'

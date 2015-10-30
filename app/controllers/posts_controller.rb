@@ -36,7 +36,7 @@ private
 
   def post_params
     params.require(:post).permit(:content).merge(
-     {topic_id: Topic.friendly.find(params(:topic_id).id)}
+     {topic_id: (Topic.friendly.find(params[:topic_id])).id}
     )
   end
 

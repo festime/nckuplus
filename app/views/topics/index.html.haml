@@ -10,6 +10,19 @@
           %th.col-md-1.text-center 觀看
           %th.col-md-1.text-center 最後回覆
       %tbody
+        - @fixed_topics.each do |topic|
+          %tr{data: {"topic-id" => topic.id}}
+            %td.col-md-7.topic-title{colspan: 2}
+              %div
+                %i.fa.fa-thumb-tack
+                = link_to topic.title, topic
+              %div.topic-excerpt
+                = topic.posts.first.content
+            %td.col-md-1.topic-user
+              = image_tag topic.user.avatar.url(:original), class: "img-circle img-responsive avatar-image", alt: topic.user.name
+            %td.col-md-1= topic.reply_count
+            %td.col-md-1.topic-visitor-count 123
+            %td.col-md-1.topic-last-reply-time{:id => "topic-#{topic.id}"}
         - @topics.each do |topic|
           %tr{data: {"topic-id" => topic.id}}
             %td.col-md-7.topic-title= link_to topic.title, topic
@@ -20,20 +33,3 @@
             %td.col-md-1.topic-visitor-count 123
             %td.col-md-1.topic-last-reply-time{:id => "topic-#{topic.id}"}
 
-    -# %table#topic-list
-      -# %tbody
-        -# - @topics.each do |topic|
-          -# %tr.topic
-            -# %td
-              -# %div
-                -# %div.clearfix
-                  -# %div.pull-left.topic-title
-                    -# = topic.title
-                  -# %div.topic-visitor-count.pull-right
-                    -# 123
-                -# %div.topic-state.clearfix
-                  -# %div.topic-category.pull-left
-                    -# %span 修課
-                  -# %div.pull-right
-                    -# %span.topic-username Yulin Chen
-                    -# %span.topic-last-reply-time 1h

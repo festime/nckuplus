@@ -3,11 +3,23 @@ class TopicsController < ApplicationController
 
   def index
     respond_to do |format|
-      format.html { @topics = Topic.all }
+      format.html do 
+        fixed_topics_ids = FixedTopicsId.fixed_topics_ids
+        @fixed_topics = Topic.find(fixed_topics_ids)
+
+        ids = Topic.pluck(:id)
+        ids = ids - fixed_topics_ids
+        @topics = Topic.find(ids)
+      end
+
       format.json do
         topics_id = Topic.pluck(:id).map { |id| "topic-#{id}" }
         topics_time = Topic.pluck(:last_reply_at)
-        json = (Hash[*(topics_id.zip(topics_time).flatten)]).to_json
+        time_data_hash = (Hash[*(topics_id.zip(topics_time).flatten)])
+        json = {
+          time: time_data_hash,
+          topics_id: FixedTopicsId.fixed_topics_ids
+        }.to_json
 
         render :json => json
       end
@@ -24,7 +36,8 @@ class TopicsController < ApplicationController
         topic = Topic.friendly.find(params[:id])
         posts_id = topic.posts.pluck(:id).map { |id| "post-#{id}" }
         posts_time = topic.posts.pluck(:created_at)
-        json = (Hash[*(posts_id.zip(posts_time).flatten)]).to_json
+        time_data_hash = (Hash[*(posts_id.zip(posts_time).flatten)])
+        json = {time: time_data_hash}.to_json
 
         render :json => json
       end

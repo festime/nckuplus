@@ -9,4 +9,5 @@ $(document).on 'page:change', ->
     },
     spellChecker: false,
   })
+  simplemde.value($('#post_content').html())
 

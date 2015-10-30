@@ -39,5 +39,6 @@ $(document).on 'page:change', ->
       $(@).html(newHTML)
     
   return unless $(".topics.index").length > 0
-  App.updateTimeFormat()
+  pageUpdater = require('pageupdater')
+  pageUpdater.update()
 
