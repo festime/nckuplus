@@ -64,16 +64,11 @@ $(document).on 'page:change', ->
 
   return unless $(".topics.show").length > 0
   pageUpdater = require('pageupdater')
-  pageUpdater.update()
+  $('.post-time').each ->
+    pageUpdater.updateTimeFormat($(@).find('span'))
 
-  idOfPosts = $('span')
-    .filter ->
-      return this.id.match(/post-[0-9]+$/)
-    .map ->
-      return $(@).attr("id").match(/[0-9]+/)
-
-  idOfPosts.each (index, postId) ->
-    pageUpdater.update('/posts/' + postId + '/comments')
+  $('.comment-time').each ->
+    pageUpdater.updateTimeFormat($(@).find('span'))
 
   marked = require('marked')
   $('.post-content').each ->

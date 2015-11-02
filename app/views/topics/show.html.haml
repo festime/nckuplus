@@ -12,10 +12,10 @@
             .post-username
               %span= post.user.name
             .post-time
-              %span{id: "post-#{post.id}"}
+              %span{id: "post-#{post.id}"}= post.created_at
           .post-body
             .post-content
-              = post.content
+              = simple_format post.content
             %div.clearfix
               - if post.comments.count > 0
                 %div.show-comments{id: "show-comments-of-post-#{post.id}"}
@@ -45,7 +45,7 @@
                 .comment-username
                   %span= comment.user.name
                 .comment-time
-                  %span{id: "post-#{comment.post.id}-comment-#{comment.id}"}
+                  %span{id: "post-#{comment.post.id}-comment-#{comment.id}"}= comment.created_at
               .comment-body
                 = form_for [post, comment], validate: true, remote: true do |f|
                   .form-group

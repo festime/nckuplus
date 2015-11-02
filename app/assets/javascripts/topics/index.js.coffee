@@ -1,35 +1,4 @@
-olderTopicsRequest = (e) ->
-  if $(window).scrollTop() >= ($(document).height() - $(window).height())
-    $(document).unbind('scroll')
 
-    # numFixedTopics = $('.fixed-topics').length
-    # numTopicsOnPage = $('[data-topic-id]').length - numFixedTopics
-    numTopicsOnPage = $('[data-topic-id]').length
-
-    $.ajax
-      url: 'older_topics'
-      method: 'POST'
-      dataType: 'html'
-      cache: false
-      data: { number_topics_on_page: numTopicsOnPage }
-      success: (html) ->
-        if html.trim().length > 0
-          $(document).scroll(olderTopicsRequest)
-
-          html = html.replace(/(?:\r\n|\r|\n)/g, '')
-
-          pageUpdater = require('pageupdater')
-          objArr = $(html)
-          $.map(objArr, (tr) ->
-            pageUpdater.updateTimeFormat($(tr).find('.topic-last-reply-time'))
-            $(tr).find('.topic-last-reply-time').data('changed', true)
-          )
-          $('tbody').append(objArr)
-
-        else
-          $('tbody').append("<tr><td colspan='6'>沒有更舊的貼文了~</td></tr>")
-
-$(document).scroll(olderTopicsRequest)
 
 $(document).on 'page:change', ->
   screenWidth = $('body').innerWidth()
@@ -74,13 +43,37 @@ $(document).on 'page:change', ->
   return unless $(".topics.index").length > 0
   pageUpdater = require('pageupdater')
   $('.topic-last-reply-time').each ->
-    unless $(@).data('changed')?
-      pageUpdater.updateTimeFormat($(@))
-      $(@).data('changed', true)
+    pageUpdater.updateTimeFormat($(@))
     return
 
-  # $('.topic-last-reply-time').one('load', ->
-    # pageUpdater.updateTimeFormat($(@))
-    # return
-  # )
+  olderTopicsRequest = (e) ->
+    if $(window).scrollTop() >= ($(document).height() - $(window).height())
+      $(document).unbind('scroll')
+
+      numTopicsOnPage = $('[data-topic-id]').length
+
+      $.ajax
+        url: 'older_topics'
+        method: 'POST'
+        dataType: 'html'
+        cache: false
+        data: { number_topics_on_page: numTopicsOnPage }
+        success: (html) ->
+          if html.trim().length > 0
+            $(document).scroll(olderTopicsRequest)
+
+            html = html.replace(/(?:\r\n|\r|\n)/g, '')
+
+            pageUpdater = require('pageupdater')
+            objArr = $(html)
+            $.map(objArr, (tr) ->
+              pageUpdater.updateTimeFormat($(tr).find('.topic-last-reply-time'))
+              $(tr).find('.topic-last-reply-time').data('changed', true)
+            )
+            $('tbody').append(objArr)
+
+          else
+            $('tbody').append("<tr><td colspan='6'>沒有更舊的貼文了~</td></tr>")
+
+  $(document).scroll(olderTopicsRequest)
 

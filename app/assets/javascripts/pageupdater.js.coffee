@@ -1,6 +1,8 @@
 pageUpdater = 
   updateTimeFormat: (obj) ->
-    obj.html(moment(obj.html().trim()).fromNow())
+    unless obj.data('changed')?
+      obj.html(moment(obj.html().trim()).fromNow())
+      obj.data('changed', true)
 
 module.exports = pageUpdater
 
