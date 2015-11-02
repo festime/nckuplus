@@ -10,7 +10,7 @@ $.fn.animateRotate = (angle, duration, easing, complete) ->
       complete: complete or $.noop
     return
 
-$(document).on 'page:change', ->
+$(document).one 'page:change', ->
   showMenu = $('#show-menu')
   hideMenu = $('#hide-menu')
 
