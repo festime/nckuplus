@@ -22,6 +22,7 @@ olderTopicsRequest = (e) ->
           objArr = $(html)
           $.map(objArr, (tr) ->
             pageUpdater.updateTimeFormat($(tr).find('.topic-last-reply-time'))
+            $(tr).find('.topic-last-reply-time').data('changed', true)
           )
           $('tbody').append(objArr)
 
@@ -73,6 +74,13 @@ $(document).on 'page:change', ->
   return unless $(".topics.index").length > 0
   pageUpdater = require('pageupdater')
   $('.topic-last-reply-time').each ->
-    pageUpdater.updateTimeFormat($(@))
+    unless $(@).data('changed')?
+      pageUpdater.updateTimeFormat($(@))
+      $(@).data('changed', true)
     return
+
+  # $('.topic-last-reply-time').one('load', ->
+    # pageUpdater.updateTimeFormat($(@))
+    # return
+  # )
 
