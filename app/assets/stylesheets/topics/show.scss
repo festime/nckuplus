@@ -1,12 +1,31 @@
 @import "bootstrap/variables";
 
 @mixin distance-between-avatar-text {
-  padding-left: 10px;
+  @media (min-width: 480px) {
+    padding-left: 10px;
+  }
+}
+
+@mixin text-settings {
+  @media (max-width: $screen-xs-max) { 
+    clear: both;
+  }
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) { 
+    margin-top: 20px;
+    overflow: hidden;
+  }
+  @media (min-width: $screen-md-min) and (max-width: $screen-md-max) { 
+    margin-top: 20px;
+    overflow: hidden;
+  }
+  @media (min-width: $screen-lg-min) { 
+    margin-top: 20px;
+    overflow: hidden;
+  }
 }
 
 @mixin action-button {
   &:hover {
-    /* transition: 0.2s background-color; */
     transition: background-color linear 0.15s;
     background-color: #eeeeee;
     cursor: pointer;
@@ -48,15 +67,11 @@ a {
   .post-header {
     @include distance-between-avatar-text;
 
-    @media (max-width: $screen-xs-max) { 
-    }
-    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) { 
-    }
-    @media (min-width: $screen-md-min) and (max-width: $screen-md-max) { 
-    }
-    @media (min-width: $screen-lg-min) { 
-    }
     overflow: auto;
+
+    @media (max-width: $screen-xs-max) {
+      padding-left: 5px;
+    }
 
     .post-username {
       float: left;
@@ -69,21 +84,12 @@ a {
 
   .post-body {
     @include distance-between-avatar-text;
+    @include text-settings;
 
-    @media (max-width: $screen-xs-max) { 
-      clear: both;
-    }
-    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) { 
-      margin-top: 20px;
-      overflow: hidden;
-    }
-    @media (min-width: $screen-md-min) and (max-width: $screen-md-max) { 
-      margin-top: 20px;
-      overflow: hidden;
-    }
-    @media (min-width: $screen-lg-min) { 
-      margin-top: 20px;
-      overflow: hidden;
+    .post-content {
+      @media (max-width: $screen-xs-max) {
+        padding-top: 10px;
+      }
     }
   }
 }
@@ -99,17 +105,10 @@ a {
   margin-left: 50px;
 
   clear: both;
+
   .comment-header {
     @include distance-between-avatar-text;
 
-    @media (max-width: $screen-xs-max) { 
-    }
-    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) { 
-    }
-    @media (min-width: $screen-md-min) and (max-width: $screen-md-max) { 
-    }
-    @media (min-width: $screen-lg-min) { 
-    }
     overflow: auto;
 
     .comment-username {
@@ -123,21 +122,10 @@ a {
 
   .comment-body {
     @include distance-between-avatar-text;
+    @include text-settings;
 
-    @media (max-width: $screen-xs-max) { 
-      clear: both;
-    }
-    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) { 
-      margin-top: 20px;
-      overflow: hidden;
-    }
-    @media (min-width: $screen-md-min) and (max-width: $screen-md-max) { 
-      margin-top: 20px;
-      overflow: hidden;
-    }
-    @media (min-width: $screen-lg-min) { 
-      margin-top: 20px;
-      overflow: hidden;
+    @media (max-width: 480px) {
+      padding-top: 10px;
     }
 
     form {
