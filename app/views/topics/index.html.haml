@@ -11,7 +11,7 @@
           %th.col-md-1.text-center 最後回覆
       %tbody
         - @fixed_topics.each do |topic|
-          %tr{data: {"topic-id" => topic.id}}
+          %tr.fixed-topics{data: {"topic-id" => topic.id}}
             %td.col-md-7.topic-title{colspan: 2}
               %div
                 %i.fa.fa-thumb-tack
@@ -22,7 +22,8 @@
               = image_tag topic.user.avatar.url(:original), class: "img-circle img-responsive avatar-image", alt: topic.user.name
             %td.col-md-1= topic.reply_count
             %td.col-md-1.topic-visitor-count 123
-            %td.col-md-1.topic-last-reply-time{:id => "topic-#{topic.id}"}
+            %td.col-md-1.topic-last-reply-time{:id => "topic-#{topic.id}-time"}
+              = topic.last_reply_at
         - @topics.each do |topic|
           %tr{data: {"topic-id" => topic.id}}
             %td.col-md-7.topic-title= link_to topic.title, topic
@@ -31,5 +32,6 @@
               = image_tag topic.user.avatar.url(:original), class: "img-circle img-responsive avatar-image", alt: topic.user.name
             %td.col-md-1= topic.reply_count
             %td.col-md-1.topic-visitor-count 123
-            %td.col-md-1.topic-last-reply-time{:id => "topic-#{topic.id}"}
+            %td.col-md-1.topic-last-reply-time{:id => "topic-#{topic.id}-time"}
+              = topic.last_reply_at
 

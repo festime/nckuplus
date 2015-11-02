@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'topics#index'
 
+  post 'older_topics', to: 'topics#older_topics'
   resources :topics do
     resources :posts
   end

@@ -1,3 +1,35 @@
+olderTopicsRequest = (e) ->
+  if $(window).scrollTop() >= ($(document).height() - $(window).height())
+    $(document).unbind('scroll')
+
+    # numFixedTopics = $('.fixed-topics').length
+    # numTopicsOnPage = $('[data-topic-id]').length - numFixedTopics
+    numTopicsOnPage = $('[data-topic-id]').length
+
+    $.ajax
+      url: 'older_topics'
+      method: 'POST'
+      dataType: 'html'
+      cache: false
+      data: { number_topics_on_page: numTopicsOnPage }
+      success: (html) ->
+        if html.trim().length > 0
+          $(document).scroll(olderTopicsRequest)
+
+          html = html.replace(/(?:\r\n|\r|\n)/g, '')
+
+          pageUpdater = require('pageupdater')
+          objArr = $(html)
+          $.map(objArr, (tr) ->
+            pageUpdater.updateTimeFormat($(tr).find('.topic-last-reply-time'))
+          )
+          $('tbody').append(objArr)
+
+        else
+          $('tbody').append("<tr><td colspan='6'>沒有更舊的貼文了~</td></tr>")
+
+$(document).scroll(olderTopicsRequest)
+
 $(document).on 'page:change', ->
   screenWidth = $('body').innerWidth()
   SMALL_SCREEN_WIDTH = 480
@@ -37,8 +69,10 @@ $(document).on 'page:change', ->
                   </td>
       "
       $(@).html(newHTML)
-    
+
   return unless $(".topics.index").length > 0
   pageUpdater = require('pageupdater')
-  pageUpdater.update()
+  $('.topic-last-reply-time').each ->
+    pageUpdater.updateTimeFormat($(@))
+    return
 

@@ -1,0 +1,12 @@
+- if @older_topics.count > 0
+  - @older_topics.each do |topic|
+    %tr{data: {"topic-id" => topic.id}}
+      %td.col-md-7.topic-title= link_to topic.title, topic
+      %td.col-md-1.topic-category 測試
+      %td.col-md-1.topic-user
+        = image_tag topic.user.avatar.url(:original), class: "img-circle img-responsive avatar-image", alt: topic.user.name
+      %td.col-md-1= topic.reply_count
+      %td.col-md-1.topic-visitor-count 123
+      %td.col-md-1.topic-last-reply-time{:id => "topic-#{topic.id}-time"}
+        = topic.last_reply_at
+

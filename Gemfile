@@ -59,6 +59,7 @@ gem 'momentjs-rails'
 gem 'pundit'
 gem 'friendly_id', '~> 5.1.0'
 gem 'browserify-rails'
+gem 'seedbank'
 #gem 'impressionist'
 
 gem 'better_errors', group: 'development'
