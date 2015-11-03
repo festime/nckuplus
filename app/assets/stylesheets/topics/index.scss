@@ -11,6 +11,9 @@ tr {
     text-align: center;
     img {
       margin: 0 auto;
+      @media (max-width: $screen-xs-max) {
+        padding-top: 3px;
+      }
     }
 
     .topic-excerpt {
@@ -19,6 +22,15 @@ tr {
       color: #909090;
       line-height: 1.4;
     }
+
+    /* a:before { */
+      /* @media (max-width: $screen-xs-max) { */
+        /* content: ""; */
+        /* position: absolute; */
+        /* padding-right: 200px; */
+        /* padding-bottom: 30px; */
+      /* } */
+    /* } */
   }
 }
 
@@ -44,12 +56,6 @@ tr {
     font-size: 1.2em;
   }
 
-  .topic-state {
-    @media (max-width: $screen-xs-max) {
-      margin-top: 20px;
-    }
-  }
-
   .topic-category {
     @media (max-width: $screen-xs-max) {
       /* padding-bottom: 5px; */
@@ -60,18 +66,26 @@ tr {
   .topic-last-reply-time {
     @media (max-width: $screen-xs-max) {
       float: right;
-      /* padding-bottom: 5px; */
-      padding-right: 15px;
     }
     color: #aaa;
   }
 
-  .topic-username {
+  .topic-visitor-count {
+    font-weight: bold;
+  }
+
+  /* small screen */
+  .topic-state {
     @media (max-width: $screen-xs-max) {
-      float: right;
-      /* padding-bottom: 5px; */
+      margin-top: 20px;
     }
-    color: #777;
+  }
+
+  .topic-item {
+    @media (max-width: $screen-xs-max) {
+      margin-left: 50px;
+      padding-left: 5px;
+    }
   }
 }
 
