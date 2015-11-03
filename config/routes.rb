@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :posts, only: [] do
     resources(
       :comments,
-      only: [:index, :create, :update, :destroy],
+      only: [:create, :update, :destroy],
       controller: "posts/comments"
     )
   end

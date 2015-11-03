@@ -11,21 +11,8 @@ class TopicsController < ApplicationController
   end
 
   def show
-    respond_to do |format|
-      format.html do
-        @topic = Topic.friendly.find(params[:id])
-      end
-
-      format.json do
-        topic = Topic.friendly.find(params[:id])
-        posts_id = topic.posts.pluck(:id).map { |id| "post-#{id}" }
-        posts_time = topic.posts.pluck(:created_at)
-        time_data_hash = (Hash[*(posts_id.zip(posts_time).flatten)])
-        json = {time: time_data_hash}.to_json
-
-        render :json => json
-      end
-    end
+    @topic = Topic.friendly.find(params[:id])
+    impressionist(@topic)
   end
 
   def new

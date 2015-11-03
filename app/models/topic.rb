@@ -1,4 +1,6 @@
 class Topic < ActiveRecord::Base
+  is_impressionable
+
   extend FriendlyId
   friendly_id :slug, use: :slugged
 
