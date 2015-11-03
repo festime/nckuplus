@@ -10,20 +10,23 @@ $.fn.animateRotate = (angle, duration, easing, complete) ->
       complete: complete or $.noop
     return
 
-$(document).one 'page:change', ->
+$(document).on 'click', '#show-menu', ->
   showMenu = $('#show-menu')
   hideMenu = $('#hide-menu')
 
-  showMenu.click ->
-    showMenu.animateRotate(-180, 200)
-    showMenu.fadeToggle(200)
-    hideMenu.animateRotate(-360, 200)
-    hideMenu.fadeToggle(100)
-    $('#sidebar').animate({"margin-right": '+=268'})
-  hideMenu.click ->
-    hideMenu.animateRotate(180, 200)
-    hideMenu.fadeToggle(200)
-    showMenu.animateRotate(180, 200)
-    showMenu.fadeToggle(100)
-    $('#sidebar').animate({"margin-right": '-=268'})
+  showMenu.animateRotate(-180, 200)
+  showMenu.fadeToggle(200)
+  hideMenu.animateRotate(-360, 200)
+  hideMenu.fadeToggle(100)
+  $('#sidebar').animate({"margin-right": '+=268'})
+
+$(document).on 'click', '#hide-menu', ->
+  showMenu = $('#show-menu')
+  hideMenu = $('#hide-menu')
+
+  hideMenu.animateRotate(180, 200)
+  hideMenu.fadeToggle(200)
+  showMenu.animateRotate(180, 200)
+  showMenu.fadeToggle(100)
+  $('#sidebar').animate({"margin-right": '-=268'})
 
