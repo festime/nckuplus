@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+ruby "2.1.5"
+
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -61,22 +63,22 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'browserify-rails'
 gem 'seedbank'
 gem 'impressionist'
+gem 'devise'
+gem 'figaro'
+gem 'awesome_print'
+gem 'pry-rails'
+
+gem 'faker'
+gem "factory_girl_rails", "~> 4.0"
 
 gem 'better_errors', group: 'development'
 
 group :development, :test do
   gem 'rspec-rails'
   gem 'pry'
-  gem 'faker'
 end
 
 group :test do
   gem 'shoulda-matchers', '~> 3.0'
 end
 
-gem 'devise'
-gem 'figaro'
-gem 'awesome_print'
-gem 'pry-rails'
-
-gem "factory_girl_rails", "~> 4.0"
