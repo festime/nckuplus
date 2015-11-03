@@ -18,7 +18,7 @@ $(document).on 'click', '#show-menu', ->
   showMenu.fadeToggle(200)
   hideMenu.animateRotate(-360, 200)
   hideMenu.fadeToggle(100)
-  $('#sidebar').animate({"margin-right": '+=268'})
+  $('#sidebar').animate({"margin-right": '+=268'}, 300)
 
 $(document).on 'click', '#hide-menu', ->
   showMenu = $('#show-menu')
@@ -28,5 +28,5 @@ $(document).on 'click', '#hide-menu', ->
   hideMenu.fadeToggle(200)
   showMenu.animateRotate(180, 200)
   showMenu.fadeToggle(100)
-  $('#sidebar').animate({"margin-right": '-=268'})
+  $('#sidebar').animate({"margin-right": '-=268'}, 300)
 

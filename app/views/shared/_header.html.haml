@@ -2,10 +2,16 @@
   .navbar-inner
     .container
       = link_to "NCKU+", root_path, class: "brand-name"
-      = fa_icon "reorder", class: "menu-switch", id: "show-menu"
-      %i.glyphicon.glyphicon-menu-right.menu-switch#hide-menu
+      #menu-switch
+        = fa_icon "reorder", class: "menu-switch", id: "show-menu"
+        %i.glyphicon.glyphicon-menu-right.menu-switch#hide-menu
       %div#sidebar
         %ul.main-menu
+          %li
+            - if user_signed_in?
+              = link_to new_topic_path do
+                %i.fa.fa-pencil-square-o
+                新增主題
           %li
             - if user_signed_in?
               = link_to destroy_user_session_path, method: :delete do
